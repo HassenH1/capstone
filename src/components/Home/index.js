@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ShowProductOnHome from '../ShowProductOnHome'
 import {
   Header,
   Div,
@@ -11,14 +12,25 @@ import {
 } from './styled'
 
 export default class index extends Component {
+  state = {
+    products: []
+  }
+
   componentDidMount = async () => {
     try {
-      console.log('hi')
-      const allProduct = await fetch('/products')
-      const allProductJson = await allProduct.json()
-      console.log(allProductJson)
+      const allProducts = await fetch('/products', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      const allProductsJson = await allProducts.json()
+      console.log(allProductsJson, "<-------all products json()")
+      this.setState({
+        products: allProductsJson
+      })
     } catch (err) {
-      console.log(err)
+      console.log(err, "<_------error from App")
     }
   }
   render() {
@@ -41,6 +53,7 @@ export default class index extends Component {
         </Div>
         <SubHeader>New Collections</SubHeader>
         <Main>
+          <ShowProductOnHome products={this.state.products}/>
         </Main>
       </>
     )

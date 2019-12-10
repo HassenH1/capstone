@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar/NavBar.js'
 import './App.css';
-import {Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -10,11 +10,11 @@ import { auth, doSignOut } from './firebase/users'
 
 class App extends Component {
   state = {
-    currentUser: {}
+    currentUser: {},
   }
-  componentDidMount() {
+  componentDidMount = async () => {
     auth.onAuthStateChanged(async authUser => {
-      if(authUser) {
+      if (authUser) {
         console.log(authUser)
         const loginUser = await fetch(`/auth/users/${authUser.uid}`)
         const loginUserJson = await loginUser.json()
@@ -30,7 +30,7 @@ class App extends Component {
         ...this.state.currentUser,
         username: currentUser.username
       }
-    })  
+    })
   }
   logout = () => {
     doSignOut()
@@ -42,14 +42,14 @@ class App extends Component {
     return (
       <div>
         {console.log(this.state.currentUser, "THIS IS CURRNET USSER")}
-       <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
-       <Switch>
-        <Route exact path='/' render={() => <Home currentUser={this.state.currentUser}/>}></Route>
-        <Route exact path='/auth/register' render={() => <Register doSetCurrentUser={this.doSetCurrentUser}/>}/>
-        <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser}/>} />
-        <Route exact path='/admin' render={() => <AddProducts products={this.state.products}/>} />
-        <Route exact path="/shoppingcart" render={() => {return <div>Hello world from shopping cart</div>}}/>
-       </Switch>
+        <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+        <Switch>
+          <Route exact path='/' render={() => <Home currentUser={this.state.currentUser} />}></Route>
+          <Route exact path='/auth/register' render={() => <Register doSetCurrentUser={this.doSetCurrentUser} />} />
+          <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser} />} />
+          <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
+          <Route exact path="/shoppingcart" render={() => { return <div>Hello world from shopping cart</div> }} />
+        </Switch>
       </div>
     );
   }

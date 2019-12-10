@@ -12,19 +12,4 @@ const config = {
 
 const firebase = app.initializeApp(config)
 
-
-// const googleProvider = new app.auth.GoogleAuthProvider()
-// const storage = firebase.storage()
-// const storageRef = storage.ref()
-
-// const doSignInWithGoogle = () => {
-//     return auth.signInWithPopup(googleProvider)
-// }
-// const doAddFile = file =>
-//     storageRef
-//         .child(`profilePics/${file.name}`)
-//         .put(file)
-
-
-
 export default firebase

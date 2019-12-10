@@ -12,14 +12,15 @@ const Product = require('../models/Products')
 //   }
 // })
 
-router.post('/admin', async (req,res) => {
-  try{
-    console.log(req.body)
-    const createProduct = await Product.create(req.body)
-    res.json(createProduct)
-  } catch(err){
-    console.log(err)
-  }
-})
+// router.post('/admin', async (req,res) => {
+//   try{
+//     console.log("hitting here")
+//     console.log(req.body)
+//     const createProduct = await Product.create(req.body)
+//     res.json(createProduct)
+//   } catch(err){
+//     console.log(err)
+//   }
+// })
 
 module.exports = router

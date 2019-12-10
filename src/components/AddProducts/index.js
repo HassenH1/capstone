@@ -69,6 +69,9 @@ export default class index extends Component {
           <input type='submit' value="submit" />
         </form>
         <input type='file' name="image" onChange={this.doAddPicture}/>
+        <br />
+        <br />
+        <br />
         {this.state.product === this.props.products}
         {this.state.product.map((p) => {
           return <img src={p.image} />
