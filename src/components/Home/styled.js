@@ -58,6 +58,7 @@ export const Transparent = styled.div`
 
 export const SubHeader = styled.h1`
   text-align: center;
+  font-weight: 300;
 `
 
 export const Main = styled.main`
@@ -65,4 +66,8 @@ export const Main = styled.main`
   margin: 0 auto;
   height: 50%;
   width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
 `

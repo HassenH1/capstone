@@ -59,7 +59,25 @@ app.get("/auth/users/:id", async (req,res) => {
   res.json(foundUser)
 })
 
-
+app.get("/products/:id", async (req,res) => {
+  // try{
+    try{
+      const productSelect = Product.findById(req.params.id)
+      console.log(productSelect, "<-----select a product")
+    } catch(err) {
+      console.log(err, "<---err on get product id")
+    }
+  //   const property = await Property.findById(req.params.id)
+  //   const user = await User.findById(req.session.userID)
+  //   res.render("property/show.ejs", {
+  //     property,
+  //     username: req.session.username,
+  //     userID: user
+  //   })
+  // } catch(err){
+  //   res.send(err)
+  // }
+})
 
 app.listen(PORT, () => {
   console.log(`Server up on ${PORT}`)

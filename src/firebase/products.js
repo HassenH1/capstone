@@ -4,9 +4,12 @@ const storage = firebase.storage()
 const storageRef = storage.ref()
 
 const doAddFile = (file) => {
+  let add = 0
+  console.log(add, "<-----------------------count from firebase")
   console.log(file, "<---from Firreee")
+  add++
   return storageRef 
-     .child(file.name)
+     .child(`${add} ${file.name}`)
      .put(file)
 }
 
