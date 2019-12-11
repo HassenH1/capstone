@@ -25,16 +25,13 @@ export default class index extends Component {
         }
       })
       const allProductsJson = await allProducts.json()
-      console.log(allProductsJson, "<-------all products json()")
       this.setState({
         products: allProductsJson
       })
     } catch (err) {
-      console.log(err, "<_------error from App")
     }
   }
   render() {
-    console.log(this.props, "<---from home")
     return (
       <>
         <Header>

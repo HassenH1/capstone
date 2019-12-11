@@ -7,7 +7,6 @@ class index extends Component {
     this.props.history.push(`/products/${this.props.products.id}`)
   }
   render() {
-    console.log(this.props.products, "<------------------------------------ShowProductOnHome")
     const homePageList = this.props.products.map((elem, i) => {
       console.log(elem, 'this is from map')
       return <NLink to={`/products/${elem._id}`}><Test onClick={() =>this.goToShowPage(elem._id)} key={i} className="product">

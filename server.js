@@ -6,12 +6,8 @@ const bcrypt = require("bcryptjs")
 session = require('express-session')
 const User = require("./models/Users.js")
 const Product = require("./models/Products.js")
-const PORT = 8000 
+const PORT = 8000
 require('./config/db')
-
-
-// const productController = require("./controllers/products")
-// app.use("/admin", productController)
 
 app.use(express.json())
 app.use(methodOverride('_method'));
@@ -21,13 +17,13 @@ app.use(session({
   resave: false
 }))
 
-app.get("/products", async (req,res) => {
+app.get("/products", async (req, res) => {
   console.log('hit')
-  try{
+  try {
     const foundProducts = await Product.find()
     console.log(foundProducts, "<----")
     res.json(foundProducts)
-  } catch(err){
+  } catch (err) {
     console.log(err)
   }
 })
@@ -42,42 +38,36 @@ app.post('/auth/register', async (req, res) => {
   }
 })
 
-app.post('/admin', async (req,res) => {
-  try{
+app.post('/admin', async (req, res) => {
+  try {
     console.log("from server")
     console.log(req.body)
     const createProduct = await Product.create(req.body)
     res.json(createProduct)
-  } catch(err){
+  } catch (err) {
     console.log(err)
   }
 })
 
-app.get("/auth/users/:id", async (req,res) => {
-  
+app.put("/auth/users/:id", async (req,res) => {
+  console.log("hitting the put route")
+})
+
+app.get("/auth/users/:id", async (req, res) => {
   const foundUser = await User.findById(req.params.id)
   res.json(foundUser)
 })
 
-app.get("/products/:id", async (req,res) => {
+app.get("/products/:id", async (req, res) => {
   // try{
-    try{
-      const productSelect = Product.findById(req.params.id)
-      console.log(productSelect, "<-----select a product")
-      res.json(productSelect, "<-------product select")
-    } catch(err) {
-      console.log(err, "<---err on get product id")
-    }
-  //   const property = await Property.findById(req.params.id)
-  //   const user = await User.findById(req.session.userID)
-  //   res.render("property/show.ejs", {
-  //     property,
-  //     username: req.session.username,
-  //     userID: user
-  //   })
-  // } catch(err){
-  //   res.send(err)
-  // }
+  console.log(req.params.id, "At least the id is here right?")
+  try {
+    const productSelect = await Product.findById(req.params.id)
+    console.log(productSelect, "<-----select a product")
+    res.json(productSelect)
+  } catch (err) {
+    console.log(err, "<---err on get product id")
+  }
 })
 
 app.listen(PORT, () => {

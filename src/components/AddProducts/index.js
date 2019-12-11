@@ -19,7 +19,6 @@ export default class index extends Component {
   handleSubmit = async (e) => {
     const { id, name, price, description, image } = this.state
     e.preventDefault()
-    console.log("hitting on submit")
     if(image) {
       doAddFile(image)
       .then(file => file.ref.getDownloadURL())
@@ -32,7 +31,6 @@ export default class index extends Component {
           }
         })
         const createProductJson = await createProduct.json()
-        console.log(createProductJson, "<--created product")
         this.setState({
           product: [...this.state.product, createProductJson]
         })
@@ -46,7 +44,6 @@ export default class index extends Component {
         }
       })
       const createProductJson = await createProduct.json()
-      console.log(createProductJson, "<--created product")
       this.setState({
         product: [...this.state.product, createProductJson]
       })
@@ -73,8 +70,8 @@ export default class index extends Component {
         <br />
         <br />
         {this.state.product === this.props.products}
-        {this.state.product.map((p) => {
-          return <img src={p.image} />
+        {this.state.product.map((p, i) => {
+          return <img key={i} src={p.image} />
         })}
       </div>
     )

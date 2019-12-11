@@ -9,7 +9,6 @@ import {
 } from './styled'
 
 const NavBar = (props) => {
-  console.log(props.currentUser, "<----------from nav from top")
   return (
     <Navbar>
       <Title>Clothing Legends</Title>
