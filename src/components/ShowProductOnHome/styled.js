@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {NavLink} from 'react-router-dom'
 
 export const Test = styled.div`
   min-height: 500px;
@@ -17,7 +18,7 @@ export const Image = styled.img`
   height: 186.664‬px;
   width: 261.5px;
 `
-export const A = styled.a`
+export const NLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
 `

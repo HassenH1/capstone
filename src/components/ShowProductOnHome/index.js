@@ -1,25 +1,29 @@
 import React, { Component } from 'react'
-import {Test, Image, A, Btn} from './styled'
+import { Test, Image, NLink, Btn } from './styled'
+import { NavLink, withRouter } from 'react-router-dom'
 
-export default class index extends Component {
-  // componentDidMount = async () => {
-  //   const selectOne = await fetch(`/products/${this.props.match.params.id}`)
-  // }
+class index extends Component {
+  goToShowPage = () => {
+    this.props.history.push(`/products/${this.props.products.id}`)
+  }
   render() {
     console.log(this.props.products, "<------------------------------------ShowProductOnHome")
+    const homePageList = this.props.products.map((elem, i) => {
+      console.log(elem, 'this is from map')
+      return <NLink to={`/products/${elem._id}`}><Test onClick={() =>this.goToShowPage(elem._id)} key={i} className="product">
+        <p>{elem._id}</p>
+        <Image src={elem.image} />
+        <h3>{elem.name}</h3>
+        <span>Price: ${elem.price}</span>
+      </Test></NLink>
+    })
     return (
       <>
-        {this.props.products.map((elem, i) => {
-          console.log(elem, 'this is from map')
-          return <A href><Test key={i} className="product">
-        <p>{elem._id}</p>
-          <Image src={elem.image}/>
-          <h3>{elem.name}</h3>
-          <span>Price: ${elem.price}</span>
-          </Test></A>
-        })}
+        {homePageList}
         <Btn>SEE MORE</Btn>
       </>
     )
   }
 }
+
+export default withRouter(index)

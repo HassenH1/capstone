@@ -42,11 +42,6 @@ export default class index extends Component {
           </Transparent>
         </Header>
         <Div>
-          {/* {
-            this.props.currentUser.username
-              ? <Header1>Shop Away {this.props.currentUser.username} </Header1>
-              : <Header1>Shop Away...</Header1>
-          } */}
           <Header1>Shop Away..</Header1>
           <DivBtn>
             <Btn>SHOP</Btn>
@@ -54,7 +49,7 @@ export default class index extends Component {
         </Div>
         <SubHeader>New Collections</SubHeader>
         <Main>
-          <ShowProductOnHome products={this.state.products}/>
+          <ShowProductOnHome products={this.state.products} />
         </Main>
       </>
     )

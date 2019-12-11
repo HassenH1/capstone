@@ -64,6 +64,7 @@ app.get("/products/:id", async (req,res) => {
     try{
       const productSelect = Product.findById(req.params.id)
       console.log(productSelect, "<-----select a product")
+      res.json(productSelect, "<-------product select")
     } catch(err) {
       console.log(err, "<---err on get product id")
     }

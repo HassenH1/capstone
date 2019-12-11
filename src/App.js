@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar/NavBar.js'
 import './App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
 import AddProducts from './components/AddProducts'
 import { auth, doSignOut } from './firebase/users'
+import Showpage from './components/Showpage'
 
 class App extends Component {
   state = {
@@ -34,9 +35,12 @@ class App extends Component {
   }
   logout = () => {
     doSignOut()
-    this.setState({
-      currentUser: {}
-    })
+      .then(() => {
+        this.setState({
+          currentUser: {}
+        })
+        this.props.history.push("/")
+      })
   }
   render() {
     return (
@@ -49,10 +53,11 @@ class App extends Component {
           <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
           <Route exact path="/shoppingcart" render={() => { return <div>Hello world from shopping cart</div> }} />
+          <Route exact path='/products/:id' render={() => <Showpage />}/>
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
