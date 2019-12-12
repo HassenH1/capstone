@@ -4,7 +4,7 @@ import {
   Navbar,
   Link,
   SecondDiv,
-  Div, 
+  Div,
   Title
 } from './styled'
 // import { doSignOut } from './firebase/users'
@@ -16,7 +16,6 @@ const NavBar = (props) => {
       <Title>Clothing Legends</Title>
       <Div>
         <Link exact to="/">Home</Link>
-        <Link exact to='/shoppingcart'><i className="fa fa-shopping-cart"></i> Cart</Link>
       </Div>
       {
         !props.currentUser.username
@@ -27,6 +26,8 @@ const NavBar = (props) => {
           </SecondDiv>
           :
           <SecondDiv>
+            <Link exact to='/shoppingcart'><i className="fa fa-shopping-cart"></i> Cart</Link>
+
             <Link exact to="/logout" onClick={props.logout}>Sign Out</Link>
           </SecondDiv>
       }

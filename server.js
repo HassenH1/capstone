@@ -21,7 +21,6 @@ app.get("/products", async (req, res) => {
   console.log('hit')
   try {
     const foundProducts = await Product.find()
-    // console.log(foundProducts, "<----")
     res.json(foundProducts)
   } catch (err) {
     console.log(err)
@@ -51,32 +50,29 @@ app.post('/admin', async (req, res) => {
 
 app.put("/auth/users/:id", async (req,res) => {
   console.log(req.params.id, 'this is teh params')
-  console.log(req.body.order)
+  console.log(req.body, "whats this")
   try {
     const userUpdateCart = await User.findById(req.params.id)
     console.log(userUpdateCart, "<---usercartUpdate")
+    // userUpdateCart.order.push(req.body.order[0]._id)
+    req.body.order.map(elem => {
+      userUpdateCart.order.push(elem._id)
+      console.log(elem._id, "<-----------am i pushing anything")
+
+    })
+    console.log(userUpdateCart, "<----------------is ther something here?")
     await userUpdateCart.save()
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)
     })).then(result => {
       res.json({...userUpdateCart, order:[result]})
     })
-
-    console.log(userUpdateCart, "After save")
-    // console.log(userUpdateCart, "<----is it populated")
-    
+    // console.log(userUpdateCart, "After save")    
   } catch(err) {
     console.log(err)
   }
 })
-/////////////////////////////////////////////
-// onst property = await Property.create(req.body)
-//     const foundUser = await User.findById(req.session.userID)
-//     foundUser.properties.push(property)
-//     foundUser.save((err, savedUser) => {
-//       res.redirect(`/property/${property._id}`)
-//     })
-/////////////////////////////////////////////
+
 app.get("/auth/users/:id", async (req, res) => {
   const foundUser = await User.findById(req.params.id)
   res.json(foundUser)

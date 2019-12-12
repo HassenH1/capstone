@@ -25,7 +25,7 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        Hello world
+        Shopping Cart!
       </div>
     )
   }

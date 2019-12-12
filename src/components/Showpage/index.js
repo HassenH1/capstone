@@ -36,6 +36,10 @@ class index extends Component {
     this.props.addToCart(this.state.currentProduct)
     // console.log(this.props.currentUser)
   }
+  modal = () => {
+    console.log("modal should pop up")
+    setTimeout(alert('Item in Cart!'), 5000)
+  }
   render() {
     return (
       <Box>
@@ -51,7 +55,7 @@ class index extends Component {
             <hr />
             <p>{this.state.currentProduct.description}</p>
             <br />
-            <AddtoCartBtn onClick={this.onSubmit}>Add to Cart</AddtoCartBtn>
+            <AddtoCartBtn onClick={this.onSubmit, this.modal}>Add to Cart</AddtoCartBtn>
             <br />
             <br />
             <BuyToBtn>Buy Now</BuyToBtn>
