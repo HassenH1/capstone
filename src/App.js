@@ -52,6 +52,7 @@ class App extends Component {
       
   }
   addToCart = (productId) => {
+    console.log(productId, "<--------------------------------product Id")
     this.state.currentUser.order.push(productId)
     console.log(this.state, "<-----order from app")
   } 
