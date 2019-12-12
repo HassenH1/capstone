@@ -7,6 +7,8 @@ import {
   Div, 
   Title
 } from './styled'
+// import { doSignOut } from './firebase/users'
+
 
 const NavBar = (props) => {
   return (

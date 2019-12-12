@@ -44,9 +44,12 @@ class App extends Component {
       .then(() => {
         this.setState({
           currentUser: {}
+        }, () => {
+          console.log(this.state, "<-----logout")
         })
         this.props.history.push("/")
       })
+      
   }
   addToCart = (productId) => {
     this.state.currentUser.order.push(productId)

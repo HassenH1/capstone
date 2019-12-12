@@ -33,7 +33,7 @@ class index extends Component {
   // }
   onSubmit = () =>{
     console.log("hitting from showpage")
-    this.props.addToCart(this.state.currentProduct._id)
+    this.props.addToCart(this.state.currentProduct)
     // console.log(this.props.currentUser)
   }
   render() {

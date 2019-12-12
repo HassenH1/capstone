@@ -7,7 +7,7 @@ const userSchema = new Schema({
   password: String,
   email: String,
   address: String, 
-  order: [{type: Schema.Types.ObjectId, ref: 'OrderItems'}]
+  order: [{type: Schema.Types.ObjectId, ref: 'Products'}]
 }, {_id: false});
 
 
