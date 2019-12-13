@@ -9,6 +9,7 @@ import AddProducts from './components/AddProducts'
 import { auth, doSignOut } from './firebase/users'
 import Showpage from './components/Showpage'
 import ShoppingCart from './components/ShoppingCart'
+import All from './components/All'
 
 class App extends Component {
   state = {
@@ -67,6 +68,7 @@ class App extends Component {
           <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
           <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser}/>} />
           <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart}/>} />
+          <Route exact path='/product/all' render={() => <All currentUser={this.state.currentUser}/>}/>
         </Switch>
       </div>
     );
