@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
+import { Main, Empty, ShoppingCart, Image, P } from './styled'
 
 export default class index extends Component {
   state = {
     inCart: {
-      order: {}
+      order: []
     }
   }
   componentDidMount = async () => {
     // this.productFetch()
-    console.log(this.props, '<--------props from somewhere')
     const cart = await fetch(`/auth/users/${this.props.currentUser.id}`, {
       method: "PUT",
       body: JSON.stringify(this.props.currentUser),
@@ -24,46 +24,37 @@ export default class index extends Component {
       inCart: {
         order: cartJson.order
       }
-    }, console.log(this.state, "<-----------state"))
+    }, console.log(this.state, "<-----------stateJS"))
   }
-  productFetch = async () => {
-    const productCart = await fetch(`/products/${this.props.currentUser.order}`, {
-      method: "PUT"
-    })
-    const productCartJson = await productCart.json()
-    console.log(productCartJson, "<---------product in cart at the moment")
-  }
+  // productFetch = async () => {
+  //   const productCart = await fetch(`/products/${this.props.currentUser.order}`, {
+  //     method: "PUT"
+  //   })
+  //   const productCartJson = await productCart.json()
+  //   console.log(productCartJson, "<---------product in cart at the moment")
+  // }
   render() {
     return (
-      <div>
-        {/***************************************Need to fix this*************************************************/}
-        {console.log(this.state.inCart.order, "<------from render")}
-
-        {/* {this.state.inCart.order.map((subArray) => {
-          return subArray.map((arr) => {
-            return arr
-          })
-        }) */}
+      <Main>
+        <Empty>Shopping Cart List</Empty>
         {
-          // this.state.inCart.order !== {}
-          //   ?
-          //   this.state.inCart.order.map((elem, i) => {
-          //     return (
-          //       <div>
-          //         Hello
-          //         { console.log(elem, "elem"),
-          //           console.log(this.state, "<-------------state")
-          //           // console.log(elem[i].image, 'map', "<-----------------inCart")
-          //         }
-          //         {/* <h1>{elem[i].name}</h1> */}
-          //       </div>
-          //     )
-          //   })
-          //   :
-          //   <div>"Nothing in shopping Cart"</div>
+          this.state.inCart.order.length > 0
+            ?
+            this.state.inCart.order.map((elem, i) => {
+              return (
+                <ShoppingCart>
+                  <P>Name: {elem.name}</P>
+                  <P>price: {elem.price}</P>
+                  <Image src={elem.image} />
+                </ShoppingCart>
+              )
+            })
+            :
+            <div>
+              <Empty>There is nothing in your Shopping Cart</Empty>
+            </div>
         }
-        {/***************************************Need to fix this*************************************************/}
-      </div>
+      </Main>
     )
   }
 }

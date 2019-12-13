@@ -65,7 +65,7 @@ app.put("/auth/users/:id", async (req,res) => {
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)
     })).then(result => {
-      res.json({...userUpdateCart, order:[result]})
+      res.json({...userUpdateCart, order:result})
     })
     // console.log(userUpdateCart, "After save")    
   } catch(err) {
