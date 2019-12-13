@@ -6,16 +6,13 @@ const bcrypt = require("bcryptjs")
 session = require('express-session')
 const User = require("./models/Users.js")
 const Product = require("./models/Products.js")
+const path = require("path")
 const PORT = 8000
 require('./config/db')
 
 app.use(express.json())
 app.use(methodOverride('_method'));
-app.use(session({
-  secret: "whatver",
-  saveUninitialized: false,
-  resave: false
-}))
+app.use(express.static(path.join(__dirname, 'build')))
 
 app.get("/products", async (req, res) => {
   console.log('hit')
@@ -85,6 +82,10 @@ app.get("/products/:id", async (req, res) => {
   } catch (err) {
     console.log(err, "<---err on get product id")
   }
+})
+
+app.get('/*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 app.listen(PORT, () => {
