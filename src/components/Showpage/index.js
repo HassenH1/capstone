@@ -13,7 +13,8 @@ import { withRouter } from 'react-router-dom';
 
 class index extends Component {
   state = {
-    currentProduct: {}
+    currentProduct: {},
+    isClicked: false
   }
   componentDidMount = async () => {
     const getProduct = await fetch(`/products/${this.props.match.params.id}`, {
@@ -41,6 +42,12 @@ class index extends Component {
   //   console.log("modal should pop up")
   //   setTimeout(alert('Item in Cart!'), 3000)
   // }
+  handleClick = () => {
+    console.log("hitting")
+    this.setState({
+      isClicked: true
+    })
+  }
   render() {
     return (
       <Box>
@@ -59,7 +66,8 @@ class index extends Component {
             <AddtoCartBtn onClick={this.onSubmit}>Add to Cart</AddtoCartBtn>
             <br />
             <br />
-            <BuyToBtn>Buy Now</BuyToBtn>
+            <BuyToBtn onClick={this.handleClick}>Buy Now</BuyToBtn>
+            <p>{this.state.isClicked && "Coming soon......."}</p>
           </Info>
         </Box2>
       </Box>

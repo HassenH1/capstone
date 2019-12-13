@@ -4,7 +4,8 @@ import { Main, Empty, ShoppingCart, Image, P, Delete } from './styled'
 export default class index extends Component {
   state = {
     inCart: {
-      order: []
+      order: [],
+      total: ""
     }
   }
   componentDidMount = async () => {
@@ -19,10 +20,11 @@ export default class index extends Component {
     console.log(cart, "<--------------cartJson")
     const cartJson = await cart.json()
     console.log(cartJson, "<-------------cartJSON")
-    console.log(cartJson.order, "<-------------cartJSON.order")
+    console.log(cartJson.order, "<-------------cartJSON.price")
     this.setState({
       inCart: {
-        order: cartJson.order
+        order: cartJson.order,
+        price: cartJson.order.price
       }
     }, console.log(this.state, "<-----------stateJS"))
   }
