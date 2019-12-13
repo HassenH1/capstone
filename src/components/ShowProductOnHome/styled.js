@@ -23,6 +23,8 @@ export const NLink = styled(NavLink)`
   color: inherit;
 `
 export const Btn = styled.button`
+  position: relative;
+  right: 0.5rem;
   margin: 0 auto 5px auto;
   background-color: Transparent;
   color: black;

@@ -76,3 +76,10 @@ export const BuyToBtn = styled.button`
   }
   font-size: 20px;
 `
+
+export const P = styled.p`
+  color: green;
+`
+export const Error = styled.p`
+  color: red;
+`

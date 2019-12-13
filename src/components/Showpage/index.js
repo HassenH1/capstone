@@ -7,14 +7,18 @@ import {
   Picture,
   Div,
   AddtoCartBtn,
-  BuyToBtn
+  BuyToBtn, 
+  P, 
+  Error
 } from './styled'
 import { withRouter } from 'react-router-dom';
 
 class index extends Component {
   state = {
     currentProduct: {},
-    isClicked: false
+    isClickedBuy: false,
+    isClickedCart: false
+
   }
   componentDidMount = async () => {
     const getProduct = await fetch(`/products/${this.props.match.params.id}`, {
@@ -28,15 +32,12 @@ class index extends Component {
       currentProduct: getProductJson
     })
   }
-  // AddtoCart = () => {
-  //   console.log(this.props.currentUser.order.push(this.state.currentProduct._id))
-  //   console.log(this.props.currentUser.order, "<------------order array in User")
-  // }
-  onSubmit = () =>{
+  onSubmit = () => {
     console.log("hitting from showpage")
     this.props.addToCart(this.state.currentProduct)
-    // console.log(this.props.currentUser)
-    alert("Item in Cart")
+      this.setState({
+        isClickedCart: true
+      })
   }
   // modal = () => {
   //   console.log("modal should pop up")
@@ -45,7 +46,7 @@ class index extends Component {
   handleClick = () => {
     console.log("hitting")
     this.setState({
-      isClicked: true
+      isClickedBuy: true
     })
   }
   render() {
@@ -63,11 +64,27 @@ class index extends Component {
             <hr />
             <p>{this.state.currentProduct.description}</p>
             <br />
-            <AddtoCartBtn onClick={this.onSubmit}>Add to Cart</AddtoCartBtn>
+            {
+              // this.props.currentUser.length !== 0 
+              Object.keys(this.props.currentUser).length !== 0
+                ? <div>
+                  <AddtoCartBtn onClick={this.onSubmit}>Add to Cart</AddtoCartBtn>
+                  <P>{this.state.isClickedCart && "Item added to Cart"}</P>
+                </div>
+                : <AddtoCartBtn disabled>Must be logged in to add to Cart</AddtoCartBtn>
+            }
             <br />
             <br />
-            <BuyToBtn onClick={this.handleClick}>Buy Now</BuyToBtn>
-            <p>{this.state.isClicked && "Coming soon......."}</p>
+            {
+              Object.keys(this.props.currentUser).length !== 0
+                ? <div>
+                  <BuyToBtn onClick={this.handleClick}>Buy Now</BuyToBtn>
+                  <Error>{this.state.isClickedBuy && "Coming soon......."}</Error>
+                </div>
+                : <BuyToBtn disabled>Must be logged in to Buy Now</BuyToBtn>
+            }
+            {/* <BuyToBtn onClick={this.handleClick}>Buy Now</BuyToBtn>
+            <p>{this.state.isClicked && "Coming soon......."}</p> */}
           </Info>
         </Box2>
       </Box>
