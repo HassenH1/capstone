@@ -36,3 +36,14 @@ export const Image = styled.img`
   margin: auto 0;
 `
 
+export const Delete = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 2rem;
+  color: red;
+  width: 4%;
+`

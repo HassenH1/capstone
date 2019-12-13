@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Main, Empty, ShoppingCart, Image, P } from './styled'
+import { Main, Empty, ShoppingCart, Image, P, Delete } from './styled'
 
 export default class index extends Component {
   state = {
@@ -46,6 +46,7 @@ export default class index extends Component {
                   <P>Name: {elem.name}</P>
                   <P>price: {elem.price}</P>
                   <Image src={elem.image} />
+                  <Delete>X</Delete>
                 </ShoppingCart>
               )
             })
