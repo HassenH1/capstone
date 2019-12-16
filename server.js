@@ -8,7 +8,9 @@ const User = require("./models/Users.js")
 const Product = require("./models/Products.js")
 const path = require("path")
 const PORT = 8000
+require('dotenv').config()
 require('./config/db')
+
 
 app.use(express.json())
 app.use(methodOverride('_method'));

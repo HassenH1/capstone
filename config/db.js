@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // mongoose is an odm
 const connectionString = process.env.MONGODB_URI;
+console.log(connectionString, "<----------what in this hoe")
 // blog
 // second argument, options object, we set
 // certain properties to true or false to do thing
