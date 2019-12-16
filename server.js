@@ -20,6 +20,7 @@ app.get("/products", async (req, res) => {
   console.log('hit')
   try {
     const foundProducts = await Product.find()
+    console.log(typeof foundProducts, "<----------find()")
     res.json(foundProducts)
   } catch (err) {
     console.log(err)

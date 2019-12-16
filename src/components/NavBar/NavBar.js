@@ -11,6 +11,7 @@ import {
 
 
 const NavBar = (props) => {
+  console.log(props, "<-----------------------nav props")
   return (
     <Navbar>
       <Title>Clothing Legends</Title>

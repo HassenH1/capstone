@@ -14,6 +14,7 @@ import All from './components/All'
 class App extends Component {
   state = {
     currentUser: {},
+    allProducts: []
   }
   componentDidMount = async () => {
     auth.onAuthStateChanged(async authUser => {
@@ -26,6 +27,19 @@ class App extends Component {
 
       }
     })
+    this.allProducts()
+  }
+  allProducts = async () => {
+    try {
+      const all = await fetch(`/products`)
+      console.log(all, "<_-------------------------------------")
+      const allJson = await all.json()
+      this.setState({
+        allProducts: [...allJson]
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
   doSetCurrentUser = currentUser => {
     console.log(currentUser._id, "<------------------------currentUser")
@@ -50,25 +64,28 @@ class App extends Component {
         })
         this.props.history.push("/")
       })
-      
+
   }
   addToCart = (productId) => {
     console.log(productId, "<--------------------------------product Id")
     this.state.currentUser.order.push(productId)
     console.log(this.state, "<-----order from app")
-  } 
+  }
+  all = () => {
+    this.props.history.push(`/products`)
+  }
   render() {
     return (
       <div>
         <NavBar currentUser={this.state.currentUser} logout={this.logout} />
         <Switch>
-          <Route exact path='/' render={() => <Home currentUser={this.state.currentUser} />}></Route>
+          <Route exact path='/' render={() => <Home currentUser={this.state.currentUser} all={this.all}/>}></Route>
           <Route exact path='/auth/register' render={() => <Register doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
-          <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser}/>} />
-          <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart}/>} />
-          <Route exact path='/product/all' render={() => <All currentUser={this.state.currentUser}/>}/>
+          <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser} />} />
+          <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart} />} />
+          <Route exact path='/products' render={() => <All currentUser={this.state.currentUser} allProducts={this.state.allProducts}/>} />
         </Switch>
       </div>
     );

@@ -41,12 +41,12 @@ export default class index extends Component {
         <Div>
           <Header1>Shop Away..</Header1>
           <DivBtn>
-            <Btn>SHOP</Btn>
+            <Btn onClick={this.props.all}>SHOP</Btn>
           </DivBtn>
         </Div>
         <SubHeader>New Collections</SubHeader>
         <Main>
-          <ShowProductOnHome products={this.state.products} />
+          <ShowProductOnHome products={this.state.products} all={this.props.all}/>
         </Main>
       </>
     )

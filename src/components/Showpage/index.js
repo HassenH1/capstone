@@ -7,8 +7,8 @@ import {
   Picture,
   Div,
   AddtoCartBtn,
-  BuyToBtn, 
-  P, 
+  BuyToBtn,
+  P,
   Error
 } from './styled'
 import { withRouter } from 'react-router-dom';
@@ -35,14 +35,10 @@ class index extends Component {
   onSubmit = () => {
     console.log("hitting from showpage")
     this.props.addToCart(this.state.currentProduct)
-      this.setState({
-        isClickedCart: true
-      })
+    this.setState({
+      isClickedCart: true
+    })
   }
-  // modal = () => {
-  //   console.log("modal should pop up")
-  //   setTimeout(alert('Item in Cart!'), 3000)
-  // }
   handleClick = () => {
     console.log("hitting")
     this.setState({
@@ -65,7 +61,6 @@ class index extends Component {
             <p>{this.state.currentProduct.description}</p>
             <br />
             {
-              // this.props.currentUser.length !== 0 
               Object.keys(this.props.currentUser).length !== 0
                 ? <div>
                   <AddtoCartBtn onClick={this.onSubmit}>Add to Cart</AddtoCartBtn>
@@ -83,8 +78,6 @@ class index extends Component {
                 </div>
                 : <BuyToBtn disabled>Must be logged in to Buy Now</BuyToBtn>
             }
-            {/* <BuyToBtn onClick={this.handleClick}>Buy Now</BuyToBtn>
-            <p>{this.state.isClicked && "Coming soon......."}</p> */}
           </Info>
         </Box2>
       </Box>
