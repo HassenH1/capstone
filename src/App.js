@@ -66,9 +66,31 @@ class App extends Component {
       })
 
   }
-  addToCart = (productId) => {
+  addToCart = async (productId) => {
     console.log(productId, "<--------------------------------product Id")
-    this.state.currentUser.order.push(productId)
+    this.setState({
+      currentUser: {...this.state.currentUser, order: [...this.state.currentUser.order, productId ]}
+    }, async () => {
+      const cart = await fetch(`/auth/users/${this.state.currentUser.id}`, {
+        method: "PUT",
+        body: JSON.stringify(this.state.currentUser),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+
+      
+    console.log(cart, "<--------------cartJson")
+    const cartJson = await cart.json()
+    console.log(cartJson, "<-------------cartJSON")
+    console.log(cartJson.order, "<-------------cartJSON.price")
+
+    })
+
+    // make a call to the backend and add product to users order
+    // then get updated user back and update state
+
+
     console.log(this.state, "<-----order from app")
   }
   all = () => {

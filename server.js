@@ -49,18 +49,11 @@ app.post('/admin', async (req, res) => {
 })
 
 app.put("/auth/users/:id", async (req,res) => {
-  console.log(req.params.id, 'this is teh params')
-  console.log(req.body, "whats this")
   try {
     const userUpdateCart = await User.findById(req.params.id)
-    console.log(userUpdateCart, "<---usercartUpdate")
-    // userUpdateCart.order.push(req.body.order[0]._id)
     req.body.order.map(elem => {
-      userUpdateCart.order.push(elem._id)
-      console.log(elem._id, "<-----------am i pushing anything")
-
+      return userUpdateCart.order.push(elem._id)
     })
-    console.log(userUpdateCart, "<----------------is ther something here?")
     await userUpdateCart.save()
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)

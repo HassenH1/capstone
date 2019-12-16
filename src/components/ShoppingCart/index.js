@@ -10,23 +10,7 @@ export default class index extends Component {
   }
   componentDidMount = async () => {
     // this.productFetch()
-    const cart = await fetch(`/auth/users/${this.props.currentUser.id}`, {
-      method: "PUT",
-      body: JSON.stringify(this.props.currentUser),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    console.log(cart, "<--------------cartJson")
-    const cartJson = await cart.json()
-    console.log(cartJson, "<-------------cartJSON")
-    console.log(cartJson.order, "<-------------cartJSON.price")
-    this.setState({
-      inCart: {
-        order: cartJson.order,
-        price: cartJson.order.price
-      }
-    }, console.log(this.state, "<-----------stateJS"))
+    console.log(this.props.currentUser)
   }
   // productFetch = async () => {
   //   const productCart = await fetch(`/products/${this.props.currentUser.order}`, {

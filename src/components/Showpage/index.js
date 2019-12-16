@@ -38,6 +38,7 @@ class index extends Component {
     this.setState({
       isClickedCart: true
     })
+    
   }
   handleClick = () => {
     console.log("hitting")
