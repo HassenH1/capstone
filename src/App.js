@@ -69,7 +69,7 @@ class App extends Component {
   addToCart = async (productId) => {
     console.log(productId, "<--------------------------------product Id")
     this.setState({
-      currentUser: {...this.state.currentUser, order: [...this.state.currentUser.order, productId ]}
+      currentUser: { ...this.state.currentUser, order: [...this.state.currentUser.order, productId] }
     }, async () => {
       const cart = await fetch(`/auth/users/${this.state.currentUser.id}`, {
         method: "PUT",
@@ -78,19 +78,13 @@ class App extends Component {
           "Content-Type": "application/json"
         }
       })
-
-      
-    console.log(cart, "<--------------cartJson")
-    const cartJson = await cart.json()
-    console.log(cartJson, "<-------------cartJSON")
-    console.log(cartJson.order, "<-------------cartJSON.price")
-
+      console.log(cart, "<--------------cartJson")
+      const cartJson = await cart.json()
+      console.log(cartJson, "<-------------cartJSON")
+      console.log(cartJson.order, "<-------------cartJSON.price")
     })
-
     // make a call to the backend and add product to users order
     // then get updated user back and update state
-
-
     console.log(this.state, "<-----order from app")
   }
   all = () => {
@@ -101,13 +95,13 @@ class App extends Component {
       <div>
         <NavBar currentUser={this.state.currentUser} logout={this.logout} />
         <Switch>
-          <Route exact path='/' render={() => <Home currentUser={this.state.currentUser} all={this.all}/>}></Route>
+          <Route exact path='/' render={() => <Home currentUser={this.state.currentUser} all={this.all} />}></Route>
           <Route exact path='/auth/register' render={() => <Register doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
           <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser} />} />
           <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart} />} />
-          <Route exact path='/products' render={() => <All currentUser={this.state.currentUser} allProducts={this.state.allProducts}/>} />
+          <Route exact path='/products' render={() => <All currentUser={this.state.currentUser} allProducts={this.state.allProducts} />} />
         </Switch>
       </div>
     );

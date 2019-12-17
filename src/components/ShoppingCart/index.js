@@ -3,30 +3,38 @@ import { Main, Empty, ShoppingCart, Image, P, Delete } from './styled'
 
 export default class index extends Component {
   state = {
-    inCart: {
-      order: [],
-      total: ""
-    }
+    cart: "",
+    updatedCart: ""
   }
   componentDidMount = async () => {
-    // this.productFetch()
-    console.log(this.props.currentUser)
+    const userOrder = await fetch(`/auth/users/${this.props.currentUser.id}`)
+    // console.log(userOrder, "<-----------user order")
+    const userOrderJson = await userOrder.json()
+    console.log(userOrderJson, "<----------userorderJson")
+    this.setState({
+      cart: userOrderJson
+    })
+    // this.getProducts()
   }
-  // productFetch = async () => {
-  //   const productCart = await fetch(`/products/${this.props.currentUser.order}`, {
-  //     method: "PUT"
+  // getProducts = () => {
+  //   this.state.cart && this.state.cart.order.map(async(elem) => {
+  //     const updatedUserOrder = await fetch(`/products/${elem}`)
+  //     // console.log(updatedUserOrder, "<_--------updateUserCartOrder")
+  //     const updatedUserOrderJson = await updatedUserOrder.json()
+  //     // console.log(updatedUserOrderJson, "<------------Grind dont stop")
+  //     this.setState({
+  //       updatedCart: [updatedUserOrderJson]
+  //     }, console.log(this.state.updatedCart))
   //   })
-  //   const productCartJson = await productCart.json()
-  //   console.log(productCartJson, "<---------product in cart at the moment")
   // }
   render() {
     return (
       <Main>
         <Empty>Shopping Cart List</Empty>
         {
-          this.state.inCart.order.length > 0
+          this.state.cart && this.state.cart.order.length > 0
             ?
-            this.state.inCart.order.map((elem, i) => {
+            this.state.cart.order.map((elem, i) => {
               return (
                 <ShoppingCart>
                   <P>Name: {elem.name}</P>
