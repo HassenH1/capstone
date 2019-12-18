@@ -29,6 +29,12 @@ export default class index extends Component {
       })
     })
   }
+  handleClick = async (id) => {
+    console.log("clicked", id)
+    const deleted = await fetch(`products/${id}`, {
+      method: "DELETE"
+    })
+  }
   render() {
     return (
       <Main>
@@ -43,7 +49,7 @@ export default class index extends Component {
                   <P>Name: {elem.name}</P>
                   <P>price: {elem.price}</P>
                   <Image src={elem.image} />
-                  <Delete>X</Delete>
+                  <Delete onClick={() => this.handleClick(elem._id)}>X</Delete>
                 </ShoppingCart>
               )
             })

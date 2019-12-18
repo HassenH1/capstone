@@ -71,6 +71,16 @@ app.get("/auth/users/:id", async (req, res) => {
   res.json(foundUser)
 })
 
+app.delete('/products/:id', (req,res) => {
+  console.log("does it get here?")
+  try{
+    console.log(req.body)
+    console.log("hitting here")
+  } catch(err){
+    console.log(err)
+  }
+})
+
 app.get("/products/:id", async (req, res) => {
   try {
     const productSelect = await Product.findById(req.params.id)
