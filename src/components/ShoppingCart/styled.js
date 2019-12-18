@@ -26,8 +26,9 @@ export const ShoppingCart = styled.div`
   top: 15%;
   display: flex;
   background-color: #F5F5F5;
-  padding: 20px;
+  padding: 8px;
   justify-content: space-around;
+  margin-bottom: 10px;
 ` 
 
 export const Image = styled.img`

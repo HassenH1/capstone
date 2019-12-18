@@ -14,6 +14,8 @@ const doAddFile = (file) => {
      .put(file)
 }
 
+console.log(add, "<-------------------------------numbers added here")
+
 export {
   doAddFile
 }

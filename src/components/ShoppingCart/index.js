@@ -8,13 +8,10 @@ export default class index extends Component {
   }
   componentDidMount = async () => {
     const userOrder = await fetch(`/auth/users/${this.props.currentUser._id}`)
-    // console.log(userOrder, "<-----------user order")
     const userOrderJson = await userOrder.json()
-    console.log(userOrderJson, "<----------userorderJson")
     this.setState({
       cart: userOrderJson
     })
-    console.log(this.state.cart, "<------------------in the cart")
     this.getProducts()
   }
 
@@ -38,7 +35,6 @@ export default class index extends Component {
   render() {
     return (
       <Main>
-        {console.log(this.state.updatedCart, "<------------")}
         <Empty>Shopping Cart List</Empty>
         {
           this.state.updatedCart && this.state.updatedCart.length > 0

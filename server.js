@@ -17,7 +17,6 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.get("/products", async (req, res) => {
-  console.log('hit')
   try {
     const foundProducts = await Product.find()
     // console.log(foundProducts, "<----------find()")
@@ -48,7 +47,7 @@ app.post('/admin', async (req, res) => {
   }
 })
 
-app.put("/auth/users/:id", async (req,res) => {
+app.put("/auth/users/:id", async (req, res) => {
   try {
     const userUpdateCart = await User.findById(req.params.id)
     req.body.order.map(elem => {
@@ -59,9 +58,9 @@ app.put("/auth/users/:id", async (req,res) => {
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)
     })).then(result => {
-      res.json({...userUpdateCart, order:result})
+      res.json({ ...userUpdateCart, order: result })
     })
-  } catch(err) {
+  } catch (err) {
     console.log(err)
   }
 })
@@ -71,12 +70,11 @@ app.get("/auth/users/:id", async (req, res) => {
   res.json(foundUser)
 })
 
-app.delete('/products/:id', (req,res) => {
+app.delete('/products/:id', (req, res) => {
   console.log("does it get here?")
-  try{
+  try {
     console.log(req.body)
-    console.log("hitting here")
-  } catch(err){
+  } catch (err) {
     console.log(err)
   }
 })
@@ -90,7 +88,7 @@ app.get("/products/:id", async (req, res) => {
   }
 })
 
-app.get('/*', (req,res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
