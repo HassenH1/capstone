@@ -59,7 +59,7 @@ class App extends Component {
   }
   addToCart = async (productId) => {
     this.setState({
-      currentUser: { ...this.state.currentUser, order: [...this.state.currentUser.order, productId] }
+      currentUser: { ...this.state.currentUser, order: [productId] }
     }, async () => {
       const cart = await fetch(`/auth/users/${this.state.currentUser._id}`, {
         method: "PUT",
@@ -69,7 +69,6 @@ class App extends Component {
         }
       },)
       const cartJson = await cart.json()
-      console.log(cartJson.order, "<-------------cartJSON")
     })
     console.log(this.state, "<-----order from app")
   }

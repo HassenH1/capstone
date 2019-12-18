@@ -33,7 +33,6 @@ class index extends Component {
     })
   }
   onSubmit = () => {
-    console.log("hitting from showpage")
     this.props.addToCart(this.state.currentProduct)
     this.setState({
       isClickedCart: true
