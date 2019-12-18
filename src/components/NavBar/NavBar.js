@@ -27,7 +27,7 @@ const NavBar = (props) => {
           </SecondDiv>
           :
           <SecondDiv>
-            <Link exact to='/shoppingcart'><i className="fa fa-shopping-cart"></i> Cart</Link>
+<Link exact to='/shoppingcart'><i className="fa fa-shopping-cart"></i> {props.currentUser.order.length}Cart</Link>
 
             <Link exact to="/logout" onClick={props.logout}>Sign Out</Link>
           </SecondDiv>

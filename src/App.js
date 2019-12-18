@@ -14,7 +14,7 @@ import All from './components/All'
 class App extends Component {
   state = {
     currentUser: {},
-    allProducts: []
+    allProducts: [],
   }
   componentDidMount = async () => {
     auth.onAuthStateChanged(async authUser => {
@@ -22,7 +22,7 @@ class App extends Component {
         console.log(authUser)
         const loginUser = await fetch(`/auth/users/${authUser.uid}`)
         const loginUserJson = await loginUser.json()
-        console.log(loginUserJson, "<----------------------login")
+        console.log(loginUserJson)
         this.doSetCurrentUser(loginUserJson)
 
       }
@@ -32,7 +32,6 @@ class App extends Component {
   allProducts = async () => {
     try {
       const all = await fetch(`/products`)
-      console.log(all, "<_-------------------------------------")
       const allJson = await all.json()
       this.setState({
         allProducts: [...allJson]
@@ -42,17 +41,9 @@ class App extends Component {
     }
   }
   doSetCurrentUser = currentUser => {
-    console.log(currentUser._id, "<------------------------currentUser")
-    console.log(this.state, "<--------------------------dosetcurrentUser")
     this.setState({
-      currentUser: {
-        ...this.state.currentUser,
-        username: currentUser.username,
-        id: currentUser._id,
-        order: []
-      }
+      currentUser
     })
-    console.log(this.state, "<------------after")
   }
   logout = () => {
     doSignOut()
@@ -67,24 +58,19 @@ class App extends Component {
 
   }
   addToCart = async (productId) => {
-    console.log(productId, "<--------------------------------product Id")
     this.setState({
       currentUser: { ...this.state.currentUser, order: [...this.state.currentUser.order, productId] }
     }, async () => {
-      const cart = await fetch(`/auth/users/${this.state.currentUser.id}`, {
+      const cart = await fetch(`/auth/users/${this.state.currentUser._id}`, {
         method: "PUT",
         body: JSON.stringify(this.state.currentUser),
         headers: {
           "Content-Type": "application/json"
         }
-      })
-      console.log(cart, "<--------------cartJson")
+      },)
       const cartJson = await cart.json()
-      console.log(cartJson, "<-------------cartJSON")
-      console.log(cartJson.order, "<-------------cartJSON.price")
+      console.log(cartJson.order, "<-------------cartJSON")
     })
-    // make a call to the backend and add product to users order
-    // then get updated user back and update state
     console.log(this.state, "<-----order from app")
   }
   all = () => {
@@ -99,7 +85,7 @@ class App extends Component {
           <Route exact path='/auth/register' render={() => <Register doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/auth/login' render={() => <Login doSetCurrentUser={this.doSetCurrentUser} />} />
           <Route exact path='/admin' render={() => <AddProducts products={this.state.products} />} />
-          <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser} />} />
+          <Route exact path="/shoppingcart" component={() => <ShoppingCart currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart} />} />
           <Route exact path='/products' render={() => <All currentUser={this.state.currentUser} allProducts={this.state.allProducts} />} />
         </Switch>

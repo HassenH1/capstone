@@ -20,7 +20,7 @@ app.get("/products", async (req, res) => {
   console.log('hit')
   try {
     const foundProducts = await Product.find()
-    console.log(typeof foundProducts, "<----------find()")
+    // console.log(foundProducts, "<----------find()")
     res.json(foundProducts)
   } catch (err) {
     console.log(err)
@@ -55,12 +55,12 @@ app.put("/auth/users/:id", async (req,res) => {
       return userUpdateCart.order.push(elem._id)
     })
     await userUpdateCart.save()
+    console.log(userUpdateCart, "<---user updated cart")
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)
     })).then(result => {
       res.json({...userUpdateCart, order:result})
     })
-    // console.log(userUpdateCart, "After save")    
   } catch(err) {
     console.log(err)
   }

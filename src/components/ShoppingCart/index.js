@@ -7,34 +7,37 @@ export default class index extends Component {
     updatedCart: ""
   }
   componentDidMount = async () => {
-    const userOrder = await fetch(`/auth/users/${this.props.currentUser.id}`)
+    const userOrder = await fetch(`/auth/users/${this.props.currentUser._id}`)
     // console.log(userOrder, "<-----------user order")
     const userOrderJson = await userOrder.json()
     console.log(userOrderJson, "<----------userorderJson")
     this.setState({
       cart: userOrderJson
     })
-    // this.getProducts()
+    console.log(this.state.cart, "<------------------in the cart")
+    this.getProducts()
   }
-  // getProducts = () => {
-  //   this.state.cart && this.state.cart.order.map(async(elem) => {
-  //     const updatedUserOrder = await fetch(`/products/${elem}`)
-  //     // console.log(updatedUserOrder, "<_--------updateUserCartOrder")
-  //     const updatedUserOrderJson = await updatedUserOrder.json()
-  //     // console.log(updatedUserOrderJson, "<------------Grind dont stop")
-  //     this.setState({
-  //       updatedCart: [updatedUserOrderJson]
-  //     }, console.log(this.state.updatedCart))
-  //   })
-  // }
+
+  getProducts = async () => {
+    let newArray = []
+    this.state.cart && this.state.cart.order.map(async (elem) => {
+      const updatedUserOrder = await fetch(`/products/${elem}`)
+      const updatedUserOrderJson = await updatedUserOrder.json()
+      newArray.push(updatedUserOrderJson)
+      this.setState({
+        updatedCart: newArray
+      })
+    })
+  }
   render() {
     return (
       <Main>
+        {console.log(this.state.updatedCart, "<------------")}
         <Empty>Shopping Cart List</Empty>
         {
-          this.state.cart && this.state.cart.order.length > 0
+          this.state.updatedCart && this.state.updatedCart.length > 0
             ?
-            this.state.cart.order.map((elem, i) => {
+            this.state.updatedCart.map((elem, i) => {
               return (
                 <ShoppingCart>
                   <P>Name: {elem.name}</P>
