@@ -26,10 +26,20 @@ export default class index extends Component {
       })
     })
   }
-  handleClick = async (id) => {
-    console.log("clicked", id)
-    const deleted = await fetch(`products/${id}`, {
-      method: "DELETE"
+  handleClick = async (id, userId) => {
+    const items = this.state.updatedCart && this.state.updatedCart.filter((elem) => {
+      return elem._id !== id
+    })
+    /////////////////////////////////////////////////////////
+    const deleted = await fetch(`/auth/users/${userId._id}`, {
+      method: "DELETE",
+      body: JSON.stringify({id}),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(resp => resp.json())
+    this.setState({
+      updatedCart: items
     })
   }
   render() {
@@ -45,7 +55,7 @@ export default class index extends Component {
                   <P>Name: {elem.name}</P>
                   <P>price: {elem.price}</P>
                   <Image src={elem.image} />
-                  <Delete onClick={() => this.handleClick(elem._id)}>X</Delete>
+                  <Delete onClick={() => this.handleClick(elem._id, this.props.currentUser)}>X</Delete>
                 </ShoppingCart>
               )
             })

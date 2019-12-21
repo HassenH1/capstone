@@ -9,10 +9,10 @@ import {
 } from './styled'
 // import { doSignOut } from './firebase/users'
 
-
 const NavBar = (props) => {
   return (
     <Navbar>
+      {console.log(props)}
       <Title>Clothing Legends</Title>
       <Div>
         <Link exact to="/">Home</Link>

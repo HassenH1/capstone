@@ -58,6 +58,8 @@ app.put("/auth/users/:id", async (req, res) => {
     Promise.all(req.body.order.map(o => {
       return Product.findById(o._id)
     })).then(result => {
+      console.log({ ...userUpdateCart }, "<----User Update Cart")
+      console.log(result, "<----result")
       res.json({ ...userUpdateCart, order: result })
     })
   } catch (err) {
@@ -70,12 +72,17 @@ app.get("/auth/users/:id", async (req, res) => {
   res.json(foundUser)
 })
 
-app.delete('/products/:id', (req, res) => {
-  console.log("does it get here?")
+app.delete('/auth/users/:id', async (req, res) => {
   try {
-    console.log(req.body)
+    const foundUser = await User.findById(req.params.id)
+    const updateOrder = foundUser.order.filter((elem) => {
+      return elem._id.toString() !== req.body.id.toString()
+    })
+    foundUser.order = updateOrder
+    await foundUser.save()
+    res.send({ message: "deleted item" })
   } catch (err) {
-    console.log(err)
+    console.log(err, "<----err message")
   }
 })
 
