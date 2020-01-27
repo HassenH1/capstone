@@ -33,7 +33,7 @@ export default class index extends Component {
     /////////////////////////////////////////////////////////
     const deleted = await fetch(`/auth/users/${userId._id}`, {
       method: "DELETE",
-      body: JSON.stringify({id}),
+      body: JSON.stringify({ id }),
       headers: {
         "Content-Type": "application/json"
       },
