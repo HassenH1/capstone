@@ -21,7 +21,19 @@ class index extends Component {
         </NLink>
       );
     });
-    return <Main>{products}</Main>;
+    return (
+      <Main>
+        <div
+          style={{
+            margin: "2rem 3rem 0 3rem",
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          {products}
+        </div>
+      </Main>
+    );
   }
 }
 

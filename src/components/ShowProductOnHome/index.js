@@ -15,10 +15,8 @@ class index extends Component {
             key={i}
             className="product"
           >
-            {/* <p>{elem._id}</p> */}
             <Image src={elem.image} />
             <h3>{elem.name}</h3>
-            {/* <span>Price: ${elem.price}</span> */}
           </Test>
         </NLink>
       );
