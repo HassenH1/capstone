@@ -43,25 +43,50 @@ class index extends Component {
         </div>
 
         <Div>
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <h4>Login</h4>
-              <input
-                type="email"
-                name="email"
-                onChange={this.handleChange}
-                placeholder="email"
-              />
-              <input
-                type="password"
-                name="password"
-                onChange={this.handleChange}
-                placeholder="password"
-              />
-              <input type="submit" value="Submit" />
-              {this.state.error && (
-                <p style={{ color: "red" }}>{this.state.error.message}</p>
-              )}
+          <div
+            style={{
+              margin: "auto",
+              width: "30vw",
+              border: "1px solid red",
+              textAlign: "center",
+              height: "auto",
+            }}
+          >
+            <form
+              onSubmit={this.handleSubmit}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <div>
+                <h4>Login</h4>
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={this.handleChange}
+                  placeholder="email"
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  onChange={this.handleChange}
+                  placeholder="password"
+                />
+              </div>
+              <div style={{ marginTop: "1rem" }}>
+                <input type="submit" value="Submit" />
+              </div>
+              <div>
+                {this.state.error && (
+                  <p style={{ color: "red" }}>{this.state.error.message}</p>
+                )}
+              </div>
             </form>
           </div>
         </Div>

@@ -5,10 +5,12 @@ export const Layout = styled.div`
   grid-template-columns: 1fr 1fr;
   padding-top: 3rem;
   margin: 0;
+  background-color: whitesmoke;
 `;
 
 export const Div = styled.div`
-  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export const oldDiv = styled.div`
