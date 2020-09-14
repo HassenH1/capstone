@@ -37,13 +37,15 @@ export const Btn = styled.button`
   background-color: Transparent;
   color: white;
   border: 2px solid white;
-  height: 50px;
+  height: 40px;
   width: 150px;
   cursor: pointer;
   border-radius: 25px;
+  transition: 1s ease;
   &:hover {
     background-color: white;
     color: black;
+    transition: 1s ease;
   }
   &:focus {
     outline: none;
@@ -63,7 +65,7 @@ export const SubHeader = styled.h1`
 `;
 
 export const Main = styled.main`
-  border: 1px outset #fffafa;
+  border: 2px outset #faeff6;
   margin: 0 4rem;
   text-align: center;
 `;

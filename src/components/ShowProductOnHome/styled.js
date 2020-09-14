@@ -35,13 +35,15 @@ export const Btn = styled.button`
   background-color: Transparent;
   color: black;
   border: 2px solid Black;
-  height: 50px;
+  height: 38px;
   width: 150px;
   cursor: pointer;
   border-radius: 25px;
+  transition: 1s ease;
   &:hover {
     background-color: black;
     color: white;
+    transition: 1s ease;
   }
   &:focus {
     outline: none;

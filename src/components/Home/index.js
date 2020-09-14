@@ -46,7 +46,7 @@ export default class index extends Component {
             </div>
           </DivBtn>
         </Div>
-        <SubHeader>New Collections</SubHeader>
+        <SubHeader>New Collection</SubHeader>
         <Main>
           <ShowProductOnHome
             products={this.state.products}

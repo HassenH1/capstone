@@ -34,7 +34,7 @@ class index extends Component {
           {homePageList}
         </div>
         <div style={{ margin: "0 auto", marginBottom: "1rem" }}>
-          <Btn onClick={this.props.all}>SEE MORE</Btn>
+          <Btn onClick={this.props.all}>More</Btn>
         </div>
       </>
     );
