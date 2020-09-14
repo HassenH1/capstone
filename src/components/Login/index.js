@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Div, Layout } from "./styled";
+import { Div, Layout, InputField, InputBtn } from "./styled";
 
 import { doSignInWithEmailAndPassword } from "../../firebase/users";
 
@@ -47,9 +47,11 @@ class index extends Component {
             style={{
               margin: "auto",
               width: "30vw",
-              border: "1px solid red",
               textAlign: "center",
               height: "auto",
+              boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)",
+              height: "50vh",
+              // padding: "0.2rem",
             }}
           >
             <form
@@ -57,35 +59,51 @@ class index extends Component {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                background: "#ffffff",
+                height: "100%",
+                // justifyContent: "normal",
               }}
             >
-              <div>
-                <h4>Login</h4>
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  onChange={this.handleChange}
-                  placeholder="email"
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={this.handleChange}
-                  placeholder="password"
-                />
-              </div>
-              <div style={{ marginTop: "1rem" }}>
-                <input type="submit" value="Submit" />
-              </div>
-              <div>
-                {this.state.error && (
-                  <p style={{ color: "red" }}>{this.state.error.message}</p>
-                )}
+              <div
+                style={{
+                  // border: "1px solid red",
+                  margin: "auto 0",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "fangsong",
+                    fontSize: "32px",
+                    // margin: "0",
+                    letterSpacing: "3px",
+                  }}
+                >
+                  <h4 style={{ margin: "10px" }}>Login</h4>
+                </div>
+                <div>
+                  <InputField
+                    type="email"
+                    name="email"
+                    onChange={this.handleChange}
+                    placeholder="email"
+                  />
+                </div>
+                <div>
+                  <InputField
+                    type="password"
+                    name="password"
+                    onChange={this.handleChange}
+                    placeholder="password"
+                  />
+                </div>
+                <div style={{ marginTop: "1rem" }}>
+                  <InputBtn type="submit" value="Submit" />
+                </div>
+                <div>
+                  {this.state.error && (
+                    <p style={{ color: "red" }}>{this.state.error.message}</p>
+                  )}
+                </div>
               </div>
             </form>
           </div>
