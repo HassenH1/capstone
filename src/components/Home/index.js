@@ -37,9 +37,13 @@ export default class index extends Component {
           <Transparent></Transparent>
         </Header>
         <Div>
-          <Header1>Shop Away..</Header1>
+          <div style={{ margin: "0 auto" }}>
+            <Header1>Shop Away..</Header1>
+          </div>
           <DivBtn>
-            <Btn onClick={this.props.all}>SHOP</Btn>
+            <div style={{ margin: "0 auto" }}>
+              <Btn onClick={this.props.all}>SHOP</Btn>
+            </div>
           </DivBtn>
         </Div>
         <SubHeader>New Collections</SubHeader>

@@ -15,10 +15,10 @@ class index extends Component {
             key={i}
             className="product"
           >
-            <p>{elem._id}</p>
+            {/* <p>{elem._id}</p> */}
             <Image src={elem.image} />
             <h3>{elem.name}</h3>
-            <span>Price: ${elem.price}</span>
+            {/* <span>Price: ${elem.price}</span> */}
           </Test>
         </NLink>
       );
@@ -33,7 +33,9 @@ class index extends Component {
         >
           {homePageList}
         </div>
-        <Btn onClick={this.props.all}>SEE MORE</Btn>
+        <div style={{ margin: "0 auto" }}>
+          <Btn onClick={this.props.all}>SEE MORE</Btn>
+        </div>
       </>
     );
   }

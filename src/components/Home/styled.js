@@ -59,6 +59,7 @@ export const Transparent = styled.div`
 export const SubHeader = styled.h1`
   text-align: center;
   font-weight: 300;
+  font-size: 55px;
 `;
 
 export const Main = styled.main`
