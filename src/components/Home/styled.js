@@ -63,7 +63,7 @@ export const SubHeader = styled.h1`
 `;
 
 export const Main = styled.main`
-  border: 2px outset;
+  border: 1px outset #fff0f5;
   margin: 0 4rem;
   text-align: center;
 `;
