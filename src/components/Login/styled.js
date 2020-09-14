@@ -25,6 +25,15 @@ export const oldDiv = styled.div`
   border: 1px solid purple;
 `;
 
+export const InnerDiv = styled.div`
+  margin: auto;
+  width: 30vw;
+  textalign: center;
+  height: auto;
+  boxshadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  height: 50vh;
+`;
+
 export const InputField = styled.input`
   width: 60%;
   padding: 12px 20px;

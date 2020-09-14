@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Div, Layout, InputField, InputBtn } from "./styled";
+import { Div, Layout, InputField, InputBtn, InnerDiv } from "./styled";
 
 import { doSignInWithEmailAndPassword } from "../../firebase/users";
 
@@ -43,7 +43,7 @@ class index extends Component {
         </div>
 
         <Div>
-          <div
+          <InnerDiv
             style={{
               margin: "auto",
               width: "30vw",
@@ -51,7 +51,6 @@ class index extends Component {
               height: "auto",
               boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)",
               height: "50vh",
-              // padding: "0.2rem",
             }}
           >
             <form
@@ -61,12 +60,10 @@ class index extends Component {
                 flexDirection: "column",
                 background: "#ffffff",
                 height: "100%",
-                // justifyContent: "normal",
               }}
             >
               <div
                 style={{
-                  // border: "1px solid red",
                   margin: "auto 0",
                 }}
               >
@@ -74,7 +71,6 @@ class index extends Component {
                   style={{
                     fontFamily: "fangsong",
                     fontSize: "32px",
-                    // margin: "0",
                     letterSpacing: "3px",
                   }}
                 >
@@ -106,7 +102,7 @@ class index extends Component {
                 </div>
               </div>
             </form>
-          </div>
+          </InnerDiv>
         </Div>
       </Layout>
     );
