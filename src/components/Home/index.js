@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ShowProductOnHome from '../ShowProductOnHome'
+import React, { Component } from "react";
+import ShowProductOnHome from "../ShowProductOnHome";
 import {
   Header,
   Div,
@@ -8,35 +8,33 @@ import {
   Btn,
   Transparent,
   SubHeader,
-  Main
-} from './styled'
+  Main,
+} from "./styled";
 
 export default class index extends Component {
   state = {
-    products: []
-  }
+    products: [],
+  };
 
   componentDidMount = async () => {
     try {
-      const allProducts = await fetch('/products', {
+      const allProducts = await fetch("/products", {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      const allProductsJson = await allProducts.json()
+          "Content-Type": "application/json",
+        },
+      });
+      const allProductsJson = await allProducts.json();
       this.setState({
-        products: allProductsJson
-      })
-    } catch (err) {
-    }
-  }
+        products: allProductsJson,
+      });
+    } catch (err) {}
+  };
   render() {
     return (
       <>
         <Header>
-          <Transparent>
-          </Transparent>
+          <Transparent></Transparent>
         </Header>
         <Div>
           <Header1>Shop Away..</Header1>
@@ -46,9 +44,13 @@ export default class index extends Component {
         </Div>
         <SubHeader>New Collections</SubHeader>
         <Main>
-          <ShowProductOnHome products={this.state.products} all={this.props.all}/>
+          <ShowProductOnHome
+            products={this.state.products}
+            all={this.props.all}
+          />
         </Main>
+        <br />
       </>
-    )
+    );
   }
 }

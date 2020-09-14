@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const Test = styled.div`
   min-height: 500px;
@@ -9,19 +9,25 @@ export const Test = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
- 
+
   padding: 0;
   margin: 10px;
-`
+`;
 
 export const Image = styled.img`
   height: 186.664‬px;
   width: 261.5px;
-`
+`;
 export const NLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
-`
+  opacity: 0.5;
+  transition: 1s ease;
+  &:hover {
+    opacity: 1;
+    transition: 1s ease;
+  }
+`;
 export const Btn = styled.button`
   position: relative;
   right: 0.5rem;
@@ -41,4 +47,4 @@ export const Btn = styled.button`
     outline: none;
   }
   font-size: 20px;
-`
+`;

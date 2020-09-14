@@ -12,7 +12,7 @@ import {
 const NavBar = (props) => {
   return (
     <Navbar>
-      {console.log(props)}
+      {/* {console.log(props)} */}
       <Title>Clothing Legends</Title>
       <Div>
         <Link exact to="/">Home</Link>

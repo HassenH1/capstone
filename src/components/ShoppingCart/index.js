@@ -3,7 +3,7 @@ import { Main, Empty, ShoppingCart, Image, P, Delete } from './styled'
 
 export default class index extends Component {
   state = {
-    cart: "",
+    cart: {order: []},
     updatedCart: ""
   }
   componentDidMount = async () => {

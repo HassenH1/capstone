@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Header = styled.header`
   height: 100vh;
@@ -6,7 +6,7 @@ export const Header = styled.header`
   background-position: center center;
   background-size: cover;
   text-align: center;
-`
+`;
 
 export const Div = styled.div`
   width: 900px;
@@ -17,21 +17,21 @@ export const Div = styled.div`
   text-align: center;
   z-index: 1px;
   font-family: Caveat;
-`
+`;
 
 export const Header1 = styled.h1`
   font-size: 180px;
-  color: #FF3399;
+  color: #ff3399;
   text-align: center;
   margin: 0;
   padding: 50px 0 0 0;
-`
+`;
 
 export const DivBtn = styled.div`
   width: 860px;
   text-align: center;
   padding-top: 65px;
-`
+`;
 
 export const Btn = styled.button`
   background-color: Transparent;
@@ -49,19 +49,26 @@ export const Btn = styled.button`
     outline: none;
   }
   font-size: 20px;
-`
+`;
 
 export const Transparent = styled.div`
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   height: 100vh;
-`
+`;
 
 export const SubHeader = styled.h1`
   text-align: center;
   font-weight: 300;
-`
+`;
 
 export const Main = styled.main`
+  border: 2px outset;
+  margin: 0 4rem;
+  text-align: center;
+`;
+
+//export const Main = styled.main``
+export const oldMain = styled.main`
   position: relative;
   margin: 0 auto;
   height: 50%;
@@ -70,4 +77,5 @@ export const Main = styled.main`
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-`
+  border: 2px outset;
+`;
