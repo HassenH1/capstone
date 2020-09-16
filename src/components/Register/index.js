@@ -48,7 +48,7 @@ class index extends Component {
       <Div>
         <div
           style={{
-            height: "50vh",
+            height: "70vh",
             border: "1px solid whitesmoke",
             width: "30vw",
           }}
@@ -60,22 +60,30 @@ class index extends Component {
               flexDirection: "column",
               background: "#ffffff",
               height: "100%",
-              justifyContent: "space-evenly",
+              justifyContent: "safe center",
               alignItems: "center",
               alignContent: "center",
               width: "auto",
+              textAlign: "center",
             }}
           >
-            <div>
-              <h4>Register</h4>
+            <div
+              style={{
+                fontFamily: "fangsong",
+                fontSize: "32px",
+                letterSpacing: "1.5px",
+              }}
+            >
+              <h4 style={{ margin: "0" }}>Register.</h4>
             </div>
 
+            <hr style={{ width: "50%" }} />
+
             <div
-              style={
-                {
-                  /*border: "1px solid red"*/
-                }
-              }
+              style={{
+                width: "100%",
+                margin: "0 auto",
+              }}
             >
               <InputField
                 type="email"
@@ -85,28 +93,37 @@ class index extends Component {
               />
             </div>
 
-            <div>
-              {/* <InputField
+            <div
+              style={{
+                width: "100%",
+                margin: "0 auto",
+              }}
+            >
+              <InputField
                 type="username"
                 name="username"
                 onChange={this.handleChange}
                 placeholder="username"
-              /> */}
+              />
             </div>
 
-            <div>
-              {/* <InputField
+            <div
+              style={{
+                width: "100%",
+                margin: "0 auto",
+              }}
+            >
+              <InputField
                 type="password"
                 name="password"
                 onChange={this.handleChange}
                 placeholder="password"
-              /> */}
+              />
             </div>
 
             <div>
               <InputBtn type="submit" value="Submit" />
             </div>
-
             <div>
               {this.state.error && (
                 <p style={{ color: "red" }}>{this.state.error.message}</p>
@@ -115,7 +132,7 @@ class index extends Component {
           </form>
         </div>
 
-        <div style={{ height: "50vh", width: "30vw" }}>
+        <div style={{ height: "70vh", width: "30vw" }}>
           <img
             src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
             alt="img"
