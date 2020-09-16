@@ -48,9 +48,8 @@ class index extends Component {
               margin: "auto",
               width: "30vw",
               textAlign: "center",
-              height: "auto",
               boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)",
-              height: "50vh",
+              height: "62vh",
             }}
           >
             <form
@@ -71,11 +70,12 @@ class index extends Component {
                   style={{
                     fontFamily: "fangsong",
                     fontSize: "32px",
-                    letterSpacing: "3px",
+                    letterSpacing: "1.5px",
                   }}
                 >
                   <h4 style={{ margin: "10px" }}>Login</h4>
                 </div>
+                <hr style={{ width: "50%" }} />
                 <div>
                   <InputField
                     type="email"
