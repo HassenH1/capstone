@@ -49,7 +49,7 @@ class index extends Component {
         <div
           style={{
             height: "70vh",
-            border: "1px solid whitesmoke",
+            border: "1px solid #FAEBD7",
             width: "30vw",
           }}
         >
