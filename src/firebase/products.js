@@ -1,24 +1,14 @@
-import firebase from './index'
-import "firebase/storage"
-const storage = firebase.storage()
-const storageRef = storage.ref()
-let add = 0
+import firebase from "./index";
+import "firebase/storage";
+const storage = firebase.storage();
+const storageRef = storage.ref();
+let add = 0;
 const doAddFile = (file) => {
+  add++;
+  return storageRef.child(`${add} ${file.name}`).put(file);
+};
 
-  console.log(add, "<-----------------------count from firebase")
-  console.log(file, "<---from Firreee")
-  add++
-  console.log(add, "<-------------------------adding")
-  return storageRef 
-     .child(`${add} ${file.name}`)
-     .put(file)
-}
-
-console.log(add, "<-------------------------------numbers added here")
-
-export {
-  doAddFile
-}
+export { doAddFile };
 // doAddFile(e.target.files[0])
 // .then(file => file.ref.getDownloadURL())
 // .then(async url => {
