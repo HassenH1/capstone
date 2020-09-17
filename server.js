@@ -7,7 +7,7 @@ const session = require("express-session");
 const User = require("./models/Users.js");
 const Product = require("./models/Products.js");
 const path = require("path");
-const PORT = 8000;
+const PORT = 8000 || process.env.PORT;
 require("dotenv").config();
 require("./config/db");
 
@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("/products", async (req, res) => {
   try {
     const foundProducts = await Product.find();
-    // console.log(foundProducts, "<----------find()")
     res.json(foundProducts);
   } catch (err) {
     console.log(err);
