@@ -17,7 +17,6 @@ const firebaseConfig = {
   projectId: "clothingstore-bedef",
   storageBucket: "clothingstore-bedef.appspot.com",
   messagingSenderId: "314969685077",
-  appId: "1:314969685077:web:3728b1bc9485f6790268dc",
 };
 // Initialize Firebase
 const firebase = app.initializeApp(firebaseConfig);
