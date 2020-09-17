@@ -11,13 +11,16 @@ import "firebase/storage";
 // };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC7g852V4B4nAEI1Lm_VRNN-cm15uTmazI",
-  authDomain: "clothingstore-bedef.firebaseapp.com",
-  databaseURL: "https://clothingstore-bedef.firebaseio.com",
-  projectId: "clothingstore-bedef",
-  storageBucket: "clothingstore-bedef.appspot.com",
-  messagingSenderId: "314969685077",
+  apiKey: "AIzaSyColdT9rJEuFe4ACjVHyqHdFi_Uyq7gVkI",
+  authDomain: "e-commerce-6a142.firebaseapp.com",
+  databaseURL: "https://e-commerce-6a142.firebaseio.com",
+  projectId: "e-commerce-6a142",
+  storageBucket: "e-commerce-6a142.appspot.com",
+  messagingSenderId: "798494773585",
+  appId: "1:798494773585:web:86a644f2c30686a038c370",
+  measurementId: "G-S91NSZKJ0Z",
 };
+
 // Initialize Firebase
 const firebase = app.initializeApp(firebaseConfig);
 
