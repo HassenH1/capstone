@@ -52,14 +52,11 @@ app.put("/auth/users/:id", async (req, res) => {
       return userUpdateCart.order.push(elem._id);
     });
     await userUpdateCart.save();
-    console.log(userUpdateCart, "<---user updated cart");
     Promise.all(
       req.body.order.map((o) => {
         return Product.findById(o._id);
       })
     ).then((result) => {
-      console.log({ ...userUpdateCart }, "<----User Update Cart");
-      console.log(result, "<----result");
       res.json({ ...userUpdateCart, order: result });
     });
   } catch (err) {
