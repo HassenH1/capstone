@@ -7,7 +7,7 @@ const session = require("express-session");
 const User = require("./models/Users.js");
 const Product = require("./models/Products.js");
 const path = require("path");
-const PORT = 8000 || process.env.PORT;
+const PORT = process.env.PORT || 8000;
 require("dotenv").config();
 require("./config/db");
 
