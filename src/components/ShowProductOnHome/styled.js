@@ -4,13 +4,14 @@ import { NavLink } from "react-router-dom";
 export const Test = styled.div`
   min-height: 500px;
   min-width: 420px;
+  min-width: 26.25rem !important;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-  padding: 0;
+  border: 2px solid purple;
+  padding: 1px;
   margin: 10px;
 `;
 
@@ -20,6 +21,7 @@ export const Image = styled.img`
 `;
 export const NLink = styled(NavLink)`
   text-decoration: none;
+  border: 1px solid green;
   color: inherit;
   opacity: 0.5;
   transition: 1s ease;
