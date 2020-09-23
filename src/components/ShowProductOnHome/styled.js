@@ -4,24 +4,21 @@ import { NavLink } from "react-router-dom";
 export const Test = styled.div`
   min-height: 500px;
   min-width: 420px;
-  min-width: 26.25rem !important;
+  min-width: 20.25rem !important;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border: 2px solid purple;
-  padding: 1px;
   margin: 10px;
+  flex-grow: 1;
 `;
 
-export const Image = styled.img`
-  height: 186.664‬px;
-  width: 261.5px;
-`;
 export const NLink = styled(NavLink)`
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
   text-decoration: none;
-  border: 1px solid green;
   color: inherit;
   opacity: 0.5;
   transition: 1s ease;
@@ -51,4 +48,9 @@ export const Btn = styled.button`
     outline: none;
   }
   font-size: 20px;
+`;
+
+export const Image = styled.img`
+  height: 186.664‬px;
+  width: 261.5px;
 `;
